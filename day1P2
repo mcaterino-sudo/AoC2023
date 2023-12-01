@@ -1,0 +1,82 @@
+def main():
+    file = open("day1Input.txt", "r")
+    
+    res = 0
+    
+    for line in file:
+        start = 0
+        end = len(line) - 1
+        num1 = ''
+        num2 = ''
+        
+        while ((not num1) or (not num2)):
+            if not num1:
+                if line[start].isnumeric():
+                    num1 = line[start]
+                else:
+                    match line[start]:
+                        case 'o':
+                            if start < len(line) - 2 and line[start : start + 3] == "one":
+                                num1 = '1'
+                        case 't':
+                            if start < len(line) - 2 and line[start : start + 3] == "two":
+                                num1 = '2'
+                            elif start < len(line) - 4 and line[start : start + 5] == "three":
+                                num1 = '3'
+                        case 'f':
+                            if start < len(line) - 3 and line[start : start + 4] == "four":
+                                num1 = '4'
+                            elif start < len(line) - 3 and line[start : start + 4] == "five":
+                                num1 = '5'
+                        case 's':
+                            if start < len(line) - 2 and line[start : start + 3] == "six":
+                                num1 = '6'
+                            elif start < len(line) - 4 and line[start : start + 5] == "seven":
+                                num1 = '7'
+                        case 'e':
+                            if start < len(line) - 4 and line[start : start + 5] == "eight":
+                                num1 = '8'
+                        case 'n':
+                            if start < len(line) - 3 and line[start : start + 4] == "nine":
+                                num1 = '9'
+            if not num2:
+                if line[end].isnumeric():
+                    num2 = line[end]
+                else:
+                    match line[end]:
+                        case 'e':
+                            if end - 2 >= 0 and line[end - 2 : end + 1] == "one":
+                                num2 = '1'
+                            elif end - 4 >= 0 and line[end - 4 : end + 1] == "three":
+                                num2 = '3'
+                            elif end - 3 >= 0 and line[end - 3 : end + 1] == "five":
+                                num2 = '5'
+                            elif end - 3 >= 0 and line[end - 3 : end + 1] == "nine":
+                                num2 = '9'
+                        case 'o':
+                            if end - 2 >= 0 and line[end - 2 : end + 1] == "two":
+                                num2 = '2'
+                        case 'r':
+                            if end - 3 >= 0 and line[end - 3 : end + 1] == "four":
+                                num2 = '4'
+                        case 'x':
+                            if end - 2 >= 0 and line[end - 2 : end + 1] == "six":
+                                num2 = '6'
+                        case 'n':
+                            if end - 4 >= 0 and line[end - 4 : end + 1] == "seven":
+                                num2 = '7'
+                        case 't':
+                            if end - 4 >= 0 and line[end - 4 : end + 1] == "eight":
+                                num2 = '8'
+            start += 1
+            end -= 1
+            
+        num = num1 + num2
+        res += int(num)
+        
+    print(res)
+    
+    file.close()
+
+if __name__ == main():
+    main()
