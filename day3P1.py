@@ -3,6 +3,7 @@ def main():
     
     vec = []
     res = 0
+    special_characters = "!@#$%^&*()-+?_=,<>/"
     
     for line in file:
         vec.append(list(line))
@@ -18,7 +19,7 @@ def main():
                         for n in range(i - 1, i + 2):
                             for k in range(j - 1, j + 2):
                                 if n > 0 and n < len(vec) and k > 0 and k < len(vec[i]):
-                                    if vec[n][k] == '*' or vec[n][k] == '#' or vec[n][k] == '+' or vec[n][k] == '$':
+                                    if vec[n][k] in special_characters:
                                         check = True
                                         break
                             if check:
