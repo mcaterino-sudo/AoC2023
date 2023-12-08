@@ -51,12 +51,7 @@ def main():
     odd = 0
     if time % 2 != 0:
         odd = 1
-    print(lowTime)
-    print(time)
-    print(dist)
-    #print(time//2)
     res *= ((time//2 - lowTime) + (time//2) + odd) - (lowTime - 1)
-    #print((time//2 - time) + (time//2) + odd - (time - 1))
     print(res)
 
 main()
